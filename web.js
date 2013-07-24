@@ -1,9 +1,14 @@
 var express = require('express');
+var fs1 = require('fs');
+
 var app = express();
 app.use(express.logger());
 
+var data = fs1.readFileSync('/home/ubuntu/bitstarter/index.html');
+var message = data.toString('utf-8');
+
 app.get('/', function(request, response) {
-  response.send('Hello World 2!');
+  response.send(message);
 });
 
 var port = process.env.PORT || 5000;
